@@ -6,14 +6,14 @@ export default function SubjectsPage() {
   const [subjects, setSubjects] = useState<string[]>([]);
   const [name, setName] = useState("");
 
-  // Load subjects
-  async function fetchSubjects() {
-    const res = await fetch("/api/subjects");
-    const data = await res.json();
-    setSubjects(data.subjects);
-  }
-
   useEffect(() => {
+    // Load subjects
+    async function fetchSubjects() {
+      const res = await fetch("/api/subjects");
+      const data = await res.json();
+      setSubjects(data.subjects);
+    }
+    
     fetchSubjects();
   }, []);
 
