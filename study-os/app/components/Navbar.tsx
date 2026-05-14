@@ -2,6 +2,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -45,15 +46,26 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="flex justify-between items-center mt-5 py-3 px-6 relative z-20">
+    <nav className="flex justify-between gap-36 items-center mt-5 py-3 px-6 relative z-20">
       {/* Logo */}
-      <p className="text-2xl font-bold text-gray-200">
+      <motion.p
+        initial={{ opacity: 0, x: "-100%" }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-2xl font-bold text-gray-200"
+      >
         Study
         <span className="text-sky-400 font-extrabold">OS</span>
-      </p>
+      </motion.p>
 
       {/* Navigation Links */}
-      <div className="relative" ref={navRef}>
+      <motion.div
+        initial={{ opacity: 0, y: "-100%" }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="relative"
+        ref={navRef}
+      >
         {/* Sliding Card */}
         <div
           className="absolute top-1/2 -translate-y-1/2 bg-sky-500/10 border border-sky-400/30 rounded-xl transition-all duration-300 ease-out pointer-events-none"
@@ -82,10 +94,15 @@ const Navbar = () => {
             </Link>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Call to Action */}
-      <div className="flex items-center gap-4">
+      <motion.div
+        initial={{ opacity: 0, x: "100%" }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        className="flex items-center gap-4"
+      >
         <Link
           href="/login"
           className="text-gray-300 hover:bg-gray-900 rounded-lg px-4 py-1 hover:text-sky-400 transition mr-4"
@@ -98,7 +115,7 @@ const Navbar = () => {
         >
           Sign Up
         </Link>
-      </div>
+      </motion.div>
     </nav>
   );
 };

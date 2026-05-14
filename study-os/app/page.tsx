@@ -1,6 +1,7 @@
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Beams from "./components/styles/Beams";
+import Trust from "./components/Trust";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       </div>
       <Navbar />
       <Hero />
+      <Trust />
     </main>
   );
 }
