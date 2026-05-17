@@ -1,3 +1,4 @@
+import Features from "./components/Features";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Beams from "./components/styles/Beams";
@@ -13,6 +14,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Trust />
+      <Features />
     </main>
   );
 }

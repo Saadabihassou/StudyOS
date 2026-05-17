@@ -14,78 +14,50 @@ const Hero = () => {
   const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!titleRef.current) return;
-
-    // Split Text Animation
-    const title = titleRef.current;
-    const text = title.innerText;
-    title.innerHTML = "";
-
-    // Create spans for each character
-    const chars = text.split("").map((char) => {
-      const span = document.createElement("span");
-      span.innerText = char === " " ? "\u00A0" : char; // Preserve spaces
-      span.style.display = "inline-block";
-      return span;
-    });
-
-    chars.forEach((span) => title.appendChild(span));
-
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
+    // Title animation
     tl.fromTo(
-      chars,
-      {
-        opacity: 0,
-        y: 80,
-        rotateX: -60,
-        scale: 0.8,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        rotateX: 0,
-        scale: 1,
-        duration: 1.1,
-        stagger: 0.025, // Beautiful character stagger
-      }
+      titleRef.current,
+      { opacity: 0, y: 60 },
+      { opacity: 1, y: 0, duration: 1.2 }
     )
       // Subtitle
       .fromTo(
         subtitleRef.current,
         { opacity: 0, y: 40 },
         { opacity: 1, y: 0, duration: 1 },
-        "-=0.7"
+        "-=0.8"
       )
       // Buttons
       .fromTo(
         buttonsRef.current?.children || [],
-        { opacity: 0, y: 30, scale: 0.9 },
+        { opacity: 0, y: 30, scale: 0.95 },
         {
           opacity: 1,
           y: 0,
           scale: 1,
           duration: 0.8,
-          stagger: 0.1,
+          stagger: 0.15,
         },
-        "-=0.8"
+        "-=0.6"
       )
-      // Hero Image
+      // Image
       .fromTo(
         imageRef.current,
-        { opacity: 0, y: 100, scale: 0.9 },
+        { opacity: 0, y: 80, scale: 0.92 },
         { opacity: 1, y: 0, scale: 1, duration: 1.4 },
         "-=0.9"
       );
   }, []);
 
   return (
-    <section className="relative z-10 flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+    <section className="relative z-10 flex flex-col items-center justify-center text-center px-6 overflow-hidden pb-12">
       {/* Hero Content */}
       <div className="flex flex-col items-center gap-5 text-center mt-28">
         <h1
           ref={titleRef}
-          className="text-6xl font-extrabold text-gray-100 mb-4 leading-tight"
+          className="text-6xl font-extrabold text-gray-100 mb-4"
         >
           Master Your Studies with{" "}
           <span className="bg-clip-text bg-linear-to-r from-sky-400 to-violet-300 text-transparent">
@@ -106,13 +78,13 @@ const Hero = () => {
         <div ref={buttonsRef} className="flex gap-4 mt-6">
           <Link
             href="/get-started"
-            className="bg-sky-500 hover:skew-2 hover:bg-linear-to-b from-sky-500 to-sky-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:scale-105 active:scale-95"
+            className="bg-sky-500 hover:bg-linear-to-b from-sky-500 to-sky-600 text-white font-bold py-3 px-6 hover:skew-2 rounded-lg transition duration-300"
           >
             Get Started
           </Link>
           <Link
             href="/learn-more"
-            className="border border-sky-500 hover:skew-2 text-gray-300 hover:text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 hover:scale-105 active:scale-95"
+            className="border border-sky-500 hover:skew-2 hover:text-white text-gray-300 font-bold py-3 px-6 rounded-lg transition duration-300"
           >
             Learn More
           </Link>
@@ -124,7 +96,7 @@ const Hero = () => {
         <Image
           src={her}
           alt="Hero Image"
-          className="w-[85%] max-w-5xl justify-self-center rounded-3xl shadow-2xl shadow-sky-400/30"
+          className="w-[90%] justify-self-center rounded-2xl shadow-2xl shadow-sky-300/50"
           priority
         />
       </div>
