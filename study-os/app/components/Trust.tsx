@@ -25,7 +25,7 @@ const Trust = () => {
         {/* Infinite Scrolling Logos */}
         <div className="overflow-hidden relative">
           <div 
-            className="flex animate-marquee whitespace-nowrap gap-16 items-center hover:[animation-play-state:paused]"
+            className="flex animate-marquee whitespace-nowrap gap-16 items-center hover:paused"
           >
             {/* First set */}
             {universities.map((uni, i) => (

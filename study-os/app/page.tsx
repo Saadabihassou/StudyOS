@@ -1,20 +1,28 @@
-import Features from "./components/Features";
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
-import Beams from "./components/styles/Beams";
-import Trust from "./components/Trust";
+import React from 'react';
+import Features from './components/Features';
+import Testimonials from './components/testimonials';
+import FAQ from './components/FAQ';
+import Trust from './components/Trust';
+import Beams from './components/styles/Beams';
+import Hero from './components/Hero';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
-export default function Home() {
+const page = () => {
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-between overflow-hidden">
-      {/* Background Beams */}
-      <div className="absolute inset-0">
+    <main className="relative overflow-hidden">
+      <div className="absolute inset-0 -z-10">
         <Beams />
       </div>
       <Navbar />
       <Hero />
-      <Trust />
       <Features />
+      <Trust />
+      <Testimonials />
+      <FAQ />
+      <Footer />
     </main>
-  );
+  )
 }
+
+export default page

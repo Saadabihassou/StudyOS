@@ -46,7 +46,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="flex justify-between gap-36 items-center mt-5 py-3 px-6 relative z-20">
+    <nav className="flex justify-between items-center mt-5 py-3 px-6 mx-11 relative z-20">
       {/* Logo */}
       <motion.p
         initial={{ opacity: 0, x: "-100%" }}
